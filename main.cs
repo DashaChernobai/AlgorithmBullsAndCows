@@ -8,22 +8,124 @@ namespace Algorithm_bulls_and_cows
 {
     class Program
     {
-        
-        static void Main(string[] args)
+        /*
+         static void Main(string[] args)
         {
 
-            String[,] arr_mb = new String[100, 2];
-            int len = 100;
+            String[,] arr_mb = new String[10000, 4];
+            int len = 10000;
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    if (i == j)
+                    for (int k = 0; k < 10; k++)
+                    {
+                        for (int l = 0; l < 10; l++)
+                        {
+                            if ((i == j) || (j == k) || (k == l)||(i == k) || (j == l) || (i == l))
                             { len--; } else
                             {
-                                arr_mb[i * 10 + j, 0] = i.ToString();
-                                arr_mb[i * 10 + j, 1] = j.ToString();
+                                arr_mb[i * 1000 + j * 100 + k * 10 + l, 0] = i.ToString();
+                                arr_mb[i * 1000 + j * 100 + k * 10 + l, 1] = j.ToString();
+                                arr_mb[i * 1000 + j * 100 + k * 10 + l, 2] = k.ToString();
+                                arr_mb[i * 1000 + j * 100 + k * 10 + l, 3] = l.ToString();
                             }
+
+
+                        }
+
+
+                    }
+
+
+                }
+            }
+
+
+            Console.WriteLine("Rest is " + len + " rows");
+
+            
+        string inputString = "";
+        Console.WriteLine("Game is started!!! (Write 'exit' to left the game)");
+            while (inputString != "exit")
+            {
+                string bulls, cows;
+        int bulls1, cows1;
+
+
+        Console.WriteLine("Input 4 numbers");
+                String[] mas = new String[4];
+        bulls = "0";
+                cows = "0";
+                bulls1 = 0;
+                cows1 = 0;
+                for (int g = 0; g< 4; g++)
+                {
+
+                    mas[g] = Console.ReadLine().ToString();
+
+
+    }
+    bulls= Console.ReadLine().ToString();
+    cows = Console.ReadLine().ToString();
+
+                for (int a = 0; a< 10*9*8*7; a++)
+                {
+
+                    for (int b = 0; b< 4; b++)
+                    {
+
+                        if (arr_mb[a, b] == mas[b]) { bulls1++; }
+                        else if ((arr_mb[a, b] == mas[0]) || (arr_mb[a, b] == mas[1]) || (arr_mb[a, b] == mas[2]))
+{
+    cows1++;
+}
+                        
+
+
+                    }
+                    if ((bulls != bulls1.ToString()) || (cows != cows1.ToString())) { if (arr_mb[a, 0] == "") { arr_mb[a, 0] = ""; arr_mb[a, 1] = ""; arr_mb[a, 2] = ""; arr_mb[a, 3] = ""; } else { arr_mb[a, 0] = ""; arr_mb[a, 1] = ""; arr_mb[a, 2] = ""; arr_mb[a, 3] = ""; len--; } }
+
+
+                }
+
+                Console.WriteLine("Rest is " + len + " rows");
+
+
+
+            }
+
+
+        }
+*/
+        static void Main(string[] args)
+        {
+
+            String[,] arr_mb = new String[10000, 4];
+            int len = 10000;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    for (int k = 0; k < 10; k++)
+                    {
+                        for (int l = 0; l < 10; l++)
+                        {
+                            if ((i == j) || (j == k) || (k == l) || (i == k) || (j == l) || (i == l))
+                            { len--; }
+                            else
+                            {
+                                arr_mb[i * 1000 + j * 100 + k * 10 + l, 0] = i.ToString();
+                                arr_mb[i * 1000 + j * 100 + k * 10 + l, 1] = j.ToString();
+                                arr_mb[i * 1000 + j * 100 + k * 10 + l, 2] = k.ToString();
+                                arr_mb[i * 1000 + j * 100 + k * 10 + l, 3] = l.ToString();
+                            }
+
+
+                        }
+
+
+                    }
 
 
 
@@ -51,13 +153,13 @@ namespace Algorithm_bulls_and_cows
                 int bulls1, cows1;
 
 
-                Console.WriteLine("Input 2 numbers");
-                String[] mas = new String[2];
+                Console.WriteLine("Input 4 numbers");
+                String[] mas = new String[4];
                 bulls = "0";
                 cows = "0";
                 bulls1 = 0;
                 cows1 = 0;
-                for (int g = 0; g < 2; g++)
+                for (int g = 0; g < 4; g++)
                 {
 
                     mas[g] = Console.ReadLine().ToString();
@@ -67,49 +169,41 @@ namespace Algorithm_bulls_and_cows
                 bulls= Console.ReadLine().ToString();
                 cows = Console.ReadLine().ToString();
                 int len_mb = 0;
-                for (int a = 0; a < 100; a++)
+                for (int a = 0; a < 10000; a++)
                 {
                     bulls1 = 0;
                     cows1 = 0;
-                    for (int b = 0; b < 2; b++)
+                    for (int b = 0; b < 4; b++)
                     {
 
                         if (arr_mb[a, b] == mas[b]) { bulls1++; } 
-                        else if ((arr_mb[a, b] == mas[0])|| (arr_mb[a, b] == mas[1])){
+                        else if ((arr_mb[a, b] == mas[0])|| (arr_mb[a, b] == mas[1]) || (arr_mb[a, b] == mas[2]) || (arr_mb[a, b] == mas[3]))
+                        {
                             cows1++;
                         }
                         
 
 
                     }
-                    /*
-                    Console.WriteLine("Number is " + arr_mb[a, 0] + arr_mb[a, 1]);
-                    Console.WriteLine("Bulls is " + bulls );
-                    Console.WriteLine("Cows is " + cows);
-                    Console.WriteLine("Bulls1 is " + bulls1);
-                    Console.WriteLine("Cows is " + cows1);
-                    Console.WriteLine("");*/
 
-                    if ((bulls == bulls1.ToString()) && (cows == cows1.ToString())) { len_mb++; } else { arr_mb[a, 0] = ""; arr_mb[a, 1] = "";  len--;  }
+                    if ((bulls == bulls1.ToString()) && (cows == cows1.ToString())) { len_mb++; } else { arr_mb[a, 0] = ""; arr_mb[a, 1] = ""; arr_mb[a, 2] = ""; arr_mb[a, 3] = ""; len--;  }
 
 
                 }
 
-                Console.WriteLine("Rest is "+len+" rows");
-                Console.WriteLine("len_mb is " + len_mb + " rows");
 
                 int counter=0;
                 bool check = false;
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 10000; i++)
                 {
-                    for (int j = 0; j < 2; j++)
+                    for (int j = 0; j < 4; j++)
                     {
                         if (arr_mb[i, 0] != "") { counter++; Console.Write("{0}\t", arr_mb[i, j]); check = true; }
                         
                     }
                     if (check) { Console.WriteLine(); check = false; }
                 }
-                Console.WriteLine("counter is " + counter/2 + " rows");
+                Console.WriteLine("There is " + len_mb + " possible variants.");
                 
 
             }
